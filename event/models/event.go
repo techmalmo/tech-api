@@ -1,6 +1,7 @@
 package models
 
 import (
+	"encoding/json"
 	"net/url"
 	"time"
 
@@ -29,7 +30,28 @@ func ValidateEventURIParams(url.Values) error {
 }
 
 // GetAllEvents returns all available events (filtering and range will be implemented later)
-func GetAllEvents(db.Connection, url.Values) (interface{}, error) {
-	// TODO
-	return nil, nil
+func GetAllEvents(conn db.Connection, _ url.Values) (interface{}, error) {
+	rows, err := conn.Query(queryGetEvents)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var events []*Event
+
+	for rows.Next() {
+		var raw []byte
+		if err := rows.Scan(&raw); err != nil {
+			return nil, err
+		}
+		event := new(Event)
+		if err := json.Unmarshal(raw, event); err != nil {
+			return nil, err
+		}
+		events = append(events, event)
+	}
+	if rows.Err() != nil {
+		return nil, rows.Err()
+	}
+	return events, nil
 }

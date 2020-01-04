@@ -14,7 +14,11 @@ import (
 	_ "github.com/tiny-go/codec/driver/json"
 	_ "github.com/tiny-go/codec/driver/xml"
 
+	_ "github.com/jackc/pgx/stdlib" // init pgx driver
+
 	// register event module
+	_ "github.com/techmalmo/tech-api/event"
+
 	local "github.com/techmalmo/tech-api/config"
 )
 
@@ -29,13 +33,14 @@ func main() {
 
 	// create database instance and test the connection
 	db, err := sql.Open("pgx", conf.DB.URI)
-	db.SetMaxOpenConns(conf.DB.MaxConnections)
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %s", err)
 	}
 	if err := db.Ping(); err != nil {
 		log.Fatalf("Cannot ping the database: %s", err)
 	}
+	db.SetMaxOpenConns(conf.DB.MaxConnections)
+
 	// create new handler
 	handler := lite.NewHandler()
 	// map db to the injector
