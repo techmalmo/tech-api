@@ -30,7 +30,5 @@ func (c *Controller) GetAll(_ context.Context, params url.Values) (interface{}, 
 	if err := models.ValidateEventURIParams(params); err != nil {
 		return nil, err
 	}
-	events, err := models.GetAllEvents(c.DB, params)
-
-	return events, err
+	return models.GetAllEvents(c.DB, params)
 }
