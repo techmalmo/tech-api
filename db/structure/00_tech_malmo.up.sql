@@ -19,7 +19,7 @@ $BODY$;
 
 CREATE TABLE public.sources (
     id uuid PRIMARY KEY NOT NULL DEFAULT public.gen_random_uuid(),
-    name character varying NOT NULL,
+    name character varying NOT NULL UNIQUE,
     properties jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
@@ -39,7 +39,7 @@ COMMENT ON TABLE public.places IS 'event places';
 
 CREATE TABLE public.types (
     id uuid PRIMARY KEY NOT NULL DEFAULT public.gen_random_uuid(),
-    name character varying NOT NULL
+    name character varying NOT NULL UNIQUE
 );
 
 COMMENT ON TABLE public.types IS 'event types (meetup/conference/workshop)';
@@ -54,7 +54,7 @@ CREATE TABLE public.events (
     type_id uuid,                     -- optional
     place_id uuid,                    -- allow NULL to announce upcoming events
     "when" timestamp with time zone,  -- allow NULL to announce upcoming events
-    created_at timestamp with time zone NOT NULL,
+    created_at timestamp with time zone NOT NULL DEFAULT NOW(),
     updated_at timestamp with time zone,
     CONSTRAINT source_fkey FOREIGN KEY (source_id)
     REFERENCES public.sources (id) MATCH SIMPLE,
@@ -72,7 +72,7 @@ CREATE TRIGGER events_modified
 
 CREATE TABLE public.tags (
     id uuid PRIMARY KEY NOT NULL DEFAULT public.gen_random_uuid(),
-    name character varying NOT NULL
+    name character varying NOT NULL UNIQUE
 );
 
 COMMENT ON TABLE public.tags IS 'tags to better identify event purpose';

@@ -10,5 +10,5 @@ import (
 func init() {
 	module := lite.NewBaseModule()
 	module.Register("", &Controller{BaseController: mw.NewBaseController()})
-	lite.Register("event", module)
+	lite.Register("events", module)
 }

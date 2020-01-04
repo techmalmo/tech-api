@@ -5,7 +5,6 @@ import (
 	"net/url"
 
 	"github.com/tiny-go/lite"
-	"github.com/tiny-go/lite/examples/ums/config"
 	mw "github.com/tiny-go/middleware"
 
 	"github.com/techmalmo/tech-api/db"
@@ -20,8 +19,7 @@ type Controller struct {
 	// inherit BaseController functionality (related to middleware)
 	*mw.BaseController
 	// controller dependencies
-	Config *config.Config `inject:"t"`
-	DB     db.Connection  `inject:"t"`
+	DB db.Connection `inject:"t"`
 }
 
 // Init controller
