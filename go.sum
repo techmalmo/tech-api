@@ -17,6 +17,8 @@ github.com/tiny-go/lite v0.0.0-20191215125739-b3804c800e7c h1:BmkfFz0I4SRf3jhfpz
 github.com/tiny-go/lite v0.0.0-20191215125739-b3804c800e7c/go.mod h1:QRgWoQXmokqtuvnPqwtJ6N4EccBQqVw45+o4/t04+uY=
 github.com/tiny-go/lite v1.0.0 h1:gzcotr7yfiDotjjowp297OXiGFxW2VBggeNkvmsmPeQ=
 github.com/tiny-go/lite v1.0.0/go.mod h1:QRgWoQXmokqtuvnPqwtJ6N4EccBQqVw45+o4/t04+uY=
+github.com/tiny-go/lite v1.0.1 h1:eXK61oz/lt8jEO8mENicykH5gUScNahhAt1gao6Am+Y=
+github.com/tiny-go/lite v1.0.1/go.mod h1:hCzMNKyP/TvQte2wnskAulEVFHROBnb1Og/s16SlKYs=
 github.com/tiny-go/middleware v1.0.0 h1:1sq+Pk7FOwy7m7DQJKq6kz3PVPPPUp/rK85Oerj7pEk=
 github.com/tiny-go/middleware v1.0.0/go.mod h1:X9/S2mm6V2jONrD/anEs8uglB+sRsw/SW1HRPDG1EoE=
 github.com/tiny-go/timap v1.0.0 h1:fA3YQfFAPnovp7pkiPZ2YnW5qhyannTw60k2Li2ulu8=

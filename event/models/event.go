@@ -18,7 +18,7 @@ type Event struct {
 	Description string     `json:"description,omitempty" xml:"Description,omitempty"`
 	Type        *Type      `json:"type,omitempty" xml:"Type,omitempty"`
 	Place       *Place     `json:"place,omitempty" xml:"Place,omitempty"`
-	Date        *time.Time `json:"date,omitempty" xml:"Date,omitempty"`
+	Date        *time.Time `json:"when,omitempty" xml:"Date,omitempty"`
 	CreatedAt   time.Time  `json:"created_at,omitempty" xml:"Created,omitempty"`
 	UpdatedAt   *time.Time `json:"updated_at,omitempty" xml:"Updated,omitempty"`
 }
